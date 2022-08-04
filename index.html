@@ -1,12 +1,95 @@
 <!DOCTYPE html>
+<html lang="de">
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="./images/index-icon.png"/>
+    <link rel="stylesheet" href="./style/index.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <title>Yeetserver</title>
 </head>
+<style>
+    :root {
+        --darkmode: rgb(70, 70, 70);
+        --whitemode: rgb(255, 255, 255);
+        --bg: var(--darkmode);
+    }
+    body {
+        background-color: var(--bg);
+    }
+</style>
 <body>
 
-<b>Die Offizielle Website des Yeetservers (In arbeit...)</b>
+<div class="appearance">
+    <button name="appearance" id="appearancebutton" onclick="appearanceButton()">Whitemode</button>
+    <script>
+    function changeAppearance(appearance) {
+        if (appearance == 1) {
+        document.documentElement.style
+        .setProperty('--bg', 'var(--whitemode)');}
+        else {
+        document.documentElement.style
+        .setProperty('--bg', 'var(--darkmode)');}
+    }
 
+
+    function appearanceButton(){
+    const el = document.getElementById("appearancebutton");
+    if (el.firstChild.data == "Darkmode") 
+    {
+        el.firstChild.data = "Whitemode";
+        changeAppearance(0)
+    }
+    else 
+    {
+        el.firstChild.data = "Darkmode";
+        changeAppearance(1)
+    }
+}
+    </script>
+</div>
+
+<div class="message">
+    <P>Website des Yeetservers 🚧👷‍♂️ (In Arbeit)
+    <br>Zurzeit finden sich hier nur ein paar zufällige Funktionen</p>
+    <label id="rndNum" class="rnd"></label>
+    <script>
+    const myArray = [
+    "gegessenen Bananen von Thompson in den letzen 5 Minuten",
+    "aktuell aktiven Bussen im Yeetserver",
+    "Bloons Spielstunden von Juls gestern",
+    "Affen an deinem Fenster",
+    "verschlafenen Stunden von Root gestern"
+    ];
+    var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+        document.getElementById('rndNum').innerHTML = `Anzahl an ${randomItem}: ${Math.round(Math.random()*10)}`;
+    </script>
+</div>
+<div class="calcClass">
+    <b>Simpler Rechenapperat ➡ &nbsp; </b>
+    <button name="calcButton" onclick="calculator()" class="calcButtonClass">🧮</button>
+    <script>
+        function calculator() {
+            var calculation = prompt("Rechnung eingeben")
+            try {
+                if (calculation.includes(",")) {
+                    var calculation = calculation.replace(",", ".")
+                }
+                const result = eval(calculation)
+                if (result === undefined || result === null) {
+                } else {
+                if (!result % 1 != 0) {
+                    alert(`Genaues Ergebnis: ${result}`)
+                } else {
+                    alert(`Genaues Ergebnis: ${result} \nGerundetes Ergebnis: ${Math.round(result)}`)
+                }}
+            }
+            catch {
+                alert(`Ungültige Rechnung: ${calculation}`)
+            }
+            
+        
+        }
+    </script>
+</div>
+</html>
 </body>

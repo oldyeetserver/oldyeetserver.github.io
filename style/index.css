@@ -1,0 +1,30 @@
+.vars {
+    --font: Arial, Helvetica, sans-serif;
+    --bg: rgb(70, 70, 70);
+}
+
+.message {
+    font-family: --font;
+    top: 10vh;
+    font-size: 40px;
+}
+
+.calcClass {
+    background-color: greenyellow;
+    display: inline-table;
+    padding: 8px 16px;
+    font-size: large;
+}
+
+.calcButtonClass {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    display: inline-block;
+    font-size: 20px;
+  }
+
+.rnd {
+    color: rgba(199, 129, 0, 0.356);
+}
