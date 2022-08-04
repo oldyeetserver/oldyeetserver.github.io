@@ -7,29 +7,35 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <title>Yeetserver</title>
 </head>
-<style>
-    :root {
-        --darkmode: rgb(70, 70, 70);
-        --whitemode: rgb(255, 255, 255);
-        --bg: var(--darkmode);
+
+<script>
+    function readCookies(cookie) {
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const useableCookie = decodedCookie.split(';');
+        return useableCookie[cookie]
     }
-    body {
-        background-color: var(--bg);
+    function getAppearance() {
+        changeAppearance(readCookies(1))
+        console.log(colorMode);
     }
-</style>
-<body>
+</script>
+
+<body onload="changeAppearance()">
 
 <div class="appearance">
     <button name="appearance" id="appearancebutton" onclick="appearanceButton()">Whitemode</button>
     <script>
     function changeAppearance(appearance) {
         if (appearance == 1) {
-        document.documentElement.style
-        .setProperty('--bg', 'var(--whitemode)');}
-        else {
-        document.documentElement.style
-        .setProperty('--bg', 'var(--darkmode)');}
+        document.cookie = "mode=1";
+        document.documentElement.style.setProperty('--bg', 'var(--whitemode)');
+        document.documentElement.style.setProperty('--fg', 'var(--whitemode_text)')
     }
+        else {
+        document.cookie = "mode=0";
+        document.documentElement.style.setProperty('--bg', 'var(--darkmode)');
+        document.documentElement.style.setProperty('--fg', 'var(--darkmode_text)')
+    }}
 
 
     function appearanceButton(){
