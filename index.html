@@ -9,17 +9,25 @@
 </head>
 
 <script>
-    function readCookies(cookie) {
-        const decodedCookie = decodeURIComponent(document.cookie);
-        const useableCookie = decodedCookie.split(';');
-        return useableCookie[cookie]
+    function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
     }
-    function getAppearance() {
-        changeAppearance(readCookies(0))
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }}
+    return "";
     }
+
     function deleteCookie(cookie) {
-        document.cookie = `${cookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/cookies;`;
+        document.cookie = `${cookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     }
+    
     function deleteAllCookies() {
     var cookies = document.cookie.split(";");
     for (var i = 0; i < cookies.length; i++) {
@@ -27,43 +35,49 @@
         var eqPos = cookie.indexOf("=");
         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-}
+    }}
 </script>
 
-<body onload="getAppearance()">
+<body onload="start()">
 
-<div class="appearance">
-    <button name="appearance" id="appearancebutton" onclick="appearanceButton()">Whitemode</button>
-    <script>
+<button class="appearance" name="appearance" id="appearancebutton" onclick="appearanceButton()">Whitemode</button>
+<script>
     function changeAppearance(appearance) {
+        const mode_button = document.getElementById("appearancebutton");
         if (appearance == 1) {
-        document.cookie = "mode=1";
         document.documentElement.style.setProperty('--bg', 'var(--whitemode)');
-        document.documentElement.style.setProperty('--fg', 'var(--whitemode_text)')
+        document.documentElement.style.setProperty('--fg', 'var(--whitemode_text)');
+        mode_button.firstChild.data = "Darkmode";
     }
         else {
-        document.cookie = "mode=0";
         document.documentElement.style.setProperty('--bg', 'var(--darkmode)');
-        document.documentElement.style.setProperty('--fg', 'var(--darkmode_text)')
+        document.documentElement.style.setProperty('--fg', 'var(--darkmode_text)');
+        mode_button.firstChild.data = "Whitemode";
     }}
 
-
     function appearanceButton(){
-    const el = document.getElementById("appearancebutton");
-    if (el.firstChild.data == "Darkmode") 
+    const mode_button = document.getElementById("appearancebutton");
+    if (mode_button.firstChild.data == "Darkmode") 
     {
-        el.firstChild.data = "Whitemode";
+        document.cookie = "mode=0";
         changeAppearance(0)
     }
     else 
     {
-        el.firstChild.data = "Darkmode";
+        document.cookie = "mode=1";
         changeAppearance(1)
+    }}
+    function start() {
+        changeAppearance(getCookie("mode"));
+        if (getCookie("visited") !== "true") {
+            on()
+        }
     }
-}
-    </script>
-</div>
+</script>
+
+<button class="delete" name="appearance" id="appearancebutton" onclick="deleteAllCookies()">Alle Cookies löschen</button>
+<button class="delete" name="appearance" id="appearancebutton" onclick="alert(document.cookie)">Gespeicherte Cookies anzeigen</button>
+
 
 <div class="message">
     <P>Website des Yeetservers 🚧👷‍♂️ (In Arbeit)
@@ -108,5 +122,51 @@
         }
     </script>
 </div>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    #overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    }
+
+    #text{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    font-size: 20px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    }
+    </style>
+
+    <div id="overlay">
+    <div id="text">Diese Seite benutzt Cookies um getroffene Einstellungen zu Speichern<br>
+    <a href="/policy.html">Mehr Informationen<br></a>
+    <button name="hidecookiebanner" onclick="off()">OK</button>
+    </div>
+
+    <script>
+   
+
+    function on() {
+    document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+    document.getElementById("overlay").style.display = "none";
+    document.cookie = "visited=true";
+    }
+</script>
+
 </html>
 </body>
