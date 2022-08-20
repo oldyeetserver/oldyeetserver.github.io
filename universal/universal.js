@@ -43,32 +43,7 @@ function deleteAllCookies() {
         document.cookie = name + "=;expires=Thu, 01 Jan 2000 00:00:00 GMT";
 }}
 
-function changeAppearance(appearance) {
-    const mode_button = document.getElementById("appearancebutton");
-    if (appearance == 1) {
-    document.documentElement.style.setProperty('--bg', 'var(--whitemode)');
-    document.documentElement.style.setProperty('--fg', 'var(--whitemode_text)');
-    mode_button.firstChild.data = "Darkmode";
-}
-    else {
-    document.documentElement.style.setProperty('--bg', 'var(--darkmode)');
-    document.documentElement.style.setProperty('--fg', 'var(--darkmode_text)');
-    mode_button.firstChild.data = "Whitemode";
-}}
-
-function appearanceButton(){
-    const mode_button = document.getElementById("appearancebutton");
-    if (mode_button.firstChild.data == "Darkmode") 
-    {
-        document.cookie = "mode=0";
-        changeAppearance(0)
-    }
-    else 
-    {
-        document.cookie = "mode=1";
-        changeAppearance(1)
-    }}
-function universal() {
+function loadAppearance() {
     changeAppearance(getCookie("mode"));
     if (getCookie("visited") !== "true") {
         on()
@@ -99,4 +74,8 @@ function on() {
 
 function random(multiplicator) {
     return Math.round(Math.random * multiplicator)
+}
+
+function startup() {
+    loadAppearance()
 }
