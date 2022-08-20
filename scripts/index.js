@@ -26,8 +26,8 @@ function calculator() {
         const result = eval(calculation)
         if (result === undefined || result === null) {
         } else {
-        if (!result % 1 != 0) {
-            alert(`Genaues Ergebnis: ${result}`)
+        if (Number.isInteger(result)) {
+            alert(`Ergebnis: ${result}`)
         } else {
             alert(`Genaues Ergebnis: ${result} \nGerundetes Ergebnis: ${Math.round(result)}`)
         }}
