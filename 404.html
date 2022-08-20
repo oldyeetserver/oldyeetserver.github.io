@@ -38,9 +38,16 @@
     url = url.replace(".html", "");
     url = url.replace("http://", "");
     url = url.replace("https://", "");
-    document.getElementById("text").innerHTML =
-    `Die Seite "${url}" ist nicht verfügbar`;
-    document.title = `${url}`;
+    if (url === "yeetserver.github.io/404") {
+        document.getElementById("text").innerHTML =
+        `Hier gibt es nichts zu sehen 👻`;
+        document.title = `${url}`;
+    }
+    else {
+        document.getElementById("text").innerHTML =
+        `Die Seite "${url}" ist nicht verfügbar`;
+        document.title = `${url}`;
+    }
 </script>
 
 </body>
