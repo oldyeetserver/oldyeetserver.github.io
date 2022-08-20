@@ -4,7 +4,7 @@
     <script src="/universal/universal.js"></script>
     <link rel="stylesheet" href="/universal/universal.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="shortcut icon" type="image/x-icon" href="./images/404-error.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="./images/ghost.png"/>
     <meta property="og:type" content="Website">
     <meta property="og:title" content="404">
     <meta property="og:description" content="404 Site not found!">
@@ -14,25 +14,34 @@
 </head>
 <body>
 
-<b class="center_text">Die Seite auf die versucht hast zugreifen, ist leider nicht verfügbar</b>
-<img src="./images/404-error.png" alt="Italian Trulli" class="center">
+
+<div class="item">
+    <img src="./images/404-error.png" alt="404-error" style="width: 100%;"/>
+    <p style="font-size: 150%;" id="text"></p>
+</div>
+
 
 <style>
-    .center_text {
+.item{
+    width: 512px;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid transparent;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    font-size: 140%;
-    }
-
-    .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    }
+}
 </style>
+
+<script>
+    var url = document.URL;
+    url = url.replace(".html", "");
+    url = url.replace("http://", "");
+    url = url.replace("https://", "");
+    document.getElementById("text").innerHTML =
+    `Die Seite "${url}" ist nicht verfügbar`;
+    document.title = `${url}`;
+</script>
 
 </body>
 </html>
