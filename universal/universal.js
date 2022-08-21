@@ -51,7 +51,7 @@ function loadAppearance() {
 }
 
 function changeAppearance(appearance) {
-    const mode_button = document.getElementById("appearancebutton");
+    const mode_button = document.getElementById("appearance-button");
     if (appearance == 1) {
     document.documentElement.style.setProperty('--bg', 'var(--whitemode)');
     document.documentElement.style.setProperty('--fg', 'var(--whitemode_text)');

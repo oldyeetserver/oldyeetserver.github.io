@@ -1,5 +1,5 @@
 function appearanceButton() {
-    const mode_button = document.getElementById("appearancebutton");
+    const mode_button = document.getElementById("appearance-button");
     if (mode_button.firstChild.data == "Darkmode") 
     {
         document.cookie = "mode=0";

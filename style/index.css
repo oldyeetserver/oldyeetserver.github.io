@@ -1,29 +1,8 @@
-.message {
+.random-emoji-class {
     color: var(--fg);
-    font-family: --font;
+    font-family: var(--font);
     top: 10vh;
     font-size: 40px;
-}
-
-.calcClass {
-    color: var(--fg);
-    background-color: greenyellow;
-    display: inline-table;
-    padding: 8px 16px;
-    font-size: large;
-}
-
-.calcButtonClass {
-    color: var(--fg);
-    background-color: #4CAF50; /* Green */
-    border: none;
-    padding: 15px 32px;
-    display: inline-block;
-    font-size: 20px;
-  }
-
-.rnd {
-    color: var(--fg);
 }
 
 #overlay {
@@ -37,7 +16,7 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
-    }
+}
 
     #text{
     position: absolute;
@@ -47,4 +26,4 @@
     color: white;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
-    }
+}
